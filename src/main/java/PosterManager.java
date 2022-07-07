@@ -1,12 +1,12 @@
 
-public class PosterItem {
+public class PosterManager {
     private int id;
     private int filmId;
     private String filmName;
     private String filmGenre;
     private int maxLimit;
 
-    private PosterItem[] items = new PosterItem[0];
+    private PosterManager[] items = new PosterManager[0];
 
     public int getId() {
         return id;
@@ -48,23 +48,23 @@ public class PosterItem {
         this.maxLimit = maxLimit;
     }
 
-    public PosterItem() {
+    public PosterManager() {
         this.maxLimit = 10;
     }
 
-    public PosterItem(int maxLimit) {
+    public PosterManager(int maxLimit) {
         this.maxLimit = maxLimit;
     }
 
-    public PosterItem(int id, int filmId, String filmName, String filmGenre) {
+    public PosterManager(int id, int filmId, String filmName, String filmGenre) {
         this.id = id;
         this.filmId = filmId;
         this.filmName = filmName;
         this.filmGenre = filmGenre;
     }
 
-    public void addNewPoster(PosterItem item) {
-        PosterItem[] tmp = new PosterItem[items.length + 1];
+    public void addNewPoster(PosterManager item) {
+        PosterManager[] tmp = new PosterManager[items.length + 1];
         for (int i = 0; i < items.length; i++) {
             tmp[i] = items[i];
         }
@@ -73,9 +73,9 @@ public class PosterItem {
     }
 
     public void removeFilmById(int id) {
-        PosterItem[] tmp = new PosterItem[items.length - 1];
+        PosterManager[] tmp = new PosterManager[items.length - 1];
         int copyToIndex = 0;
-        for (PosterItem item : items) {
+        for (PosterManager item : items) {
             if (item.getId() != id) {
                 tmp[copyToIndex] = item;
                 copyToIndex++;
@@ -84,12 +84,12 @@ public class PosterItem {
         items = tmp;
     }
 
-    public PosterItem[] findAllPosters() {
+    public PosterManager[] findAllPosters() {
         return items;
     }
 
 
-    public PosterItem[] findLastPosters() {
+    public PosterManager[] findLastPosters() {
         int resultLength;
         if (items.length < maxLimit) {
             resultLength = items.length;
@@ -97,7 +97,7 @@ public class PosterItem {
             resultLength = maxLimit;
         }
 
-        PosterItem[] tmp = new PosterItem[resultLength];
+        PosterManager[] tmp = new PosterManager[resultLength];
         for (int i = 0; i < tmp.length; i++) {
             tmp[i] = items[items.length - 1 - i];
         }

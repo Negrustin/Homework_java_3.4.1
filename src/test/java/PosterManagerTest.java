@@ -1,59 +1,59 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class PosterItemTest {
-    PosterItem item1 = new PosterItem(1, 11, "film1", "genre1");
-    PosterItem item2 = new PosterItem(2, 12, "film2", "genre2");
-    PosterItem item3 = new PosterItem(3, 13, "film3", "genre3");
-    PosterItem item4 = new PosterItem(4, 14, "film4", "genre3");
-    PosterItem item5 = new PosterItem(5, 15, "film5", "genre2");
-    PosterItem item6 = new PosterItem(6, 16, "film6", "genre2");
-    PosterItem item7 = new PosterItem(7, 17, "film7", "genre3");
-    PosterItem item8 = new PosterItem(8, 18, "film8", "genre4");
-    PosterItem item9 = new PosterItem(9, 19, "film9", "genre3");
-    PosterItem item10 = new PosterItem(10, 20, "film10", "genre5");
-    PosterItem item11 = new PosterItem(11, 121, "film11", "genre1");
+public class PosterManagerTest {
+    PosterManager item1 = new PosterManager(1, 11, "film1", "genre1");
+    PosterManager item2 = new PosterManager(2, 12, "film2", "genre2");
+    PosterManager item3 = new PosterManager(3, 13, "film3", "genre3");
+    PosterManager item4 = new PosterManager(4, 14, "film4", "genre3");
+    PosterManager item5 = new PosterManager(5, 15, "film5", "genre2");
+    PosterManager item6 = new PosterManager(6, 16, "film6", "genre2");
+    PosterManager item7 = new PosterManager(7, 17, "film7", "genre3");
+    PosterManager item8 = new PosterManager(8, 18, "film8", "genre4");
+    PosterManager item9 = new PosterManager(9, 19, "film9", "genre3");
+    PosterManager item10 = new PosterManager(10, 20, "film10", "genre5");
+    PosterManager item11 = new PosterManager(11, 121, "film11", "genre1");
 
     @Test
     public void addNewPoser() {
-        PosterItem item = new PosterItem();
+        PosterManager item = new PosterManager();
         item.addNewPoster(item1);
 
 
-        PosterItem[] expected = {item1};
-        PosterItem[] actual = item.findAllPosters();
+        PosterManager[] expected = {item1};
+        PosterManager[] actual = item.findAllPosters();
 
         Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
     public void notAddedPosters() {
-        PosterItem item = new PosterItem();
+        PosterManager item = new PosterManager();
 
-        PosterItem[] expected = {};
-        PosterItem[] actual = item.findAllPosters();
+        PosterManager[] expected = {};
+        PosterManager[] actual = item.findAllPosters();
 
         Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
     public void findLastPosters() {
-        PosterItem item = new PosterItem();
+        PosterManager item = new PosterManager();
         item.addNewPoster(item1);
         item.addNewPoster(item2);
         item.addNewPoster(item3);
 
         item.findLastPosters();
 
-        PosterItem[] expected = {item3, item2, item1};
-        PosterItem[] actual = item.findLastPosters();
+        PosterManager[] expected = {item3, item2, item1};
+        PosterManager[] actual = item.findLastPosters();
 
         Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
     public void remoteFilmById() {
-        PosterItem item = new PosterItem();
+        PosterManager item = new PosterManager();
 
         item.addNewPoster(item1);
         item.addNewPoster(item2);
@@ -61,13 +61,13 @@ public class PosterItemTest {
 
         item.removeFilmById(item2.getId());
 
-        PosterItem[] excepted = {item1, item2};
-        PosterItem[] actual = item.findAllPosters();
+        PosterManager[] excepted = {item1, item2};
+        PosterManager[] actual = item.findAllPosters();
     }
 
     @Test
     public void findLastPostersAboveDefaultUpperLimit() {
-        PosterItem item = new PosterItem();
+        PosterManager item = new PosterManager();
 
         item.addNewPoster(item1);
         item.addNewPoster(item2);
@@ -82,8 +82,8 @@ public class PosterItemTest {
         item.addNewPoster(item11);
 
 
-        PosterItem[] excepted = {item11, item10, item9, item8, item7, item6, item5, item4, item3, item2};
-        PosterItem[] actual = item.findLastPosters();
+        PosterManager[] excepted = {item11, item10, item9, item8, item7, item6, item5, item4, item3, item2};
+        PosterManager[] actual = item.findLastPosters();
 
         Assertions.assertArrayEquals(excepted, actual);
     }
@@ -91,7 +91,7 @@ public class PosterItemTest {
     @Test
     public void smallMaxLimit() {
 
-        PosterItem item = new PosterItem(5);
+        PosterManager item = new PosterManager(5);
 
         item.addNewPoster(item1);
         item.addNewPoster(item2);
@@ -100,8 +100,8 @@ public class PosterItemTest {
         item.addNewPoster(item5);
         item.addNewPoster(item6);
 
-        PosterItem[] excepted = {item6, item5, item4, item3, item2};
-        PosterItem[] actual = item.findLastPosters();
+        PosterManager[] excepted = {item6, item5, item4, item3, item2};
+        PosterManager[] actual = item.findLastPosters();
 
         Assertions.assertArrayEquals(excepted, actual);
     }
@@ -109,20 +109,20 @@ public class PosterItemTest {
     @Test
     public void findLastPostersAboveUpperLimitParam() {
 
-        PosterItem item = new PosterItem(15);
+        PosterManager item = new PosterManager(15);
 
         item.addNewPoster(item1);
         item.addNewPoster(item2);
 
-        PosterItem[] excepted = {item2, item1};
-        PosterItem[] actual = item.findLastPosters();
+        PosterManager[] excepted = {item2, item1};
+        PosterManager[] actual = item.findLastPosters();
 
         Assertions.assertArrayEquals(excepted, actual);
     }
 
     @Test
     public void findLastPostersCountAboveDefaultLimit() {
-        PosterItem item = new PosterItem(11);
+        PosterManager item = new PosterManager(11);
 
         item.addNewPoster(item1);
         item.addNewPoster(item2);
@@ -136,8 +136,8 @@ public class PosterItemTest {
         item.addNewPoster(item10);
         item.addNewPoster(item11);
 
-        PosterItem[] excepted = {item11, item10, item9, item8, item7, item6, item5, item4, item3, item2, item1};
-        PosterItem[] actual = item.findLastPosters();
+        PosterManager[] excepted = {item11, item10, item9, item8, item7, item6, item5, item4, item3, item2, item1};
+        PosterManager[] actual = item.findLastPosters();
 
         Assertions.assertArrayEquals(excepted, actual);
 
