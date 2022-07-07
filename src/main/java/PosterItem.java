@@ -90,7 +90,6 @@ public class PosterItem {
     }
 
 
-
     public PosterItem[] findLastPosters() {
         int resultLength;
         if (items.length < maxLimit) {

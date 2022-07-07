@@ -25,8 +25,9 @@ public class PosterItemTest {
 
         Assertions.assertArrayEquals(expected, actual);
     }
+
     @Test
-    public void notAddedPosters(){
+    public void notAddedPosters() {
         PosterItem item = new PosterItem();
 
         PosterItem[] expected = {};
@@ -84,7 +85,7 @@ public class PosterItemTest {
         PosterItem[] excepted = {item11, item10, item9, item8, item7, item6, item5, item4, item3, item2};
         PosterItem[] actual = item.findLastPosters();
 
-        Assertions.assertArrayEquals(excepted,actual);
+        Assertions.assertArrayEquals(excepted, actual);
     }
 
     @Test
@@ -102,7 +103,7 @@ public class PosterItemTest {
         PosterItem[] excepted = {item6, item5, item4, item3, item2};
         PosterItem[] actual = item.findLastPosters();
 
-        Assertions.assertArrayEquals(excepted,actual);
+        Assertions.assertArrayEquals(excepted, actual);
     }
 
     @Test
@@ -116,10 +117,11 @@ public class PosterItemTest {
         PosterItem[] excepted = {item2, item1};
         PosterItem[] actual = item.findLastPosters();
 
-        Assertions.assertArrayEquals(excepted,actual);
+        Assertions.assertArrayEquals(excepted, actual);
     }
+
     @Test
-    public void findLastPostersCountAboveDefaultLimit(){
+    public void findLastPostersCountAboveDefaultLimit() {
         PosterItem item = new PosterItem(11);
 
         item.addNewPoster(item1);
@@ -134,13 +136,12 @@ public class PosterItemTest {
         item.addNewPoster(item10);
         item.addNewPoster(item11);
 
-        PosterItem[] excepted = {item11,item10,item9,item8,item7,item6,item5,item4,item3,item2, item1};
+        PosterItem[] excepted = {item11, item10, item9, item8, item7, item6, item5, item4, item3, item2, item1};
         PosterItem[] actual = item.findLastPosters();
 
-        Assertions.assertArrayEquals(excepted,actual);
+        Assertions.assertArrayEquals(excepted, actual);
 
     }
-
 
 
 }
