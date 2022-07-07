@@ -1,4 +1,3 @@
-import java.security.PublicKey;
 
 public class PosterItem {
     private int id;
